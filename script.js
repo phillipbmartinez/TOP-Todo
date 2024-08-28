@@ -17,31 +17,7 @@ function loadLocalStorage() {
         const todoList = JSON.parse(localStorage.getItem("tempTodoList")) || [];
 
         todoList.forEach((todo) => {
-            const newTodoCard = document.createElement("div");
-            newTodoCard.classList.add("todoCard");
-
-            // Create delete button
-            const deleteButton = document.createElement("button");
-            deleteButton.classList.add("deleteButton");
-            deleteButton.innerHTML = "<strong>X</strong>";
-            newTodoCard.appendChild(deleteButton)
-
-            // Create complete button
-            const checkIcon = document.createElement("img");
-            checkIcon.src = "check.svg"
-            const completeButton = document.createElement("button");
-            completeButton.classList.add("completeButton");
-            completeButton.appendChild(checkIcon);
-            newTodoCard.appendChild(completeButton);
-
-            newTodoCard.innerHTML = `
-            <p class="title"><strong>Title:</strong> ${todo.title}</p>
-            <p class="description"><strong>Description:</strong> ${todo.description}</p>
-            <p class="dueDate"><strong>Due Date:</strong> ${todo.dueDate}</p>
-            <p class="priority"><strong>Priority:</strong> ${todo.priority}</p>
-            <p class="list"><strong>List:</strong> ${todo.list}</p>
-            `;
-
+            const newTodoCard = createTodoCard(todo);
             activeTodoContainer.appendChild(newTodoCard);
         });
     });
