@@ -68,3 +68,60 @@ body {
     border-radius: 10px;
     margin-top: 20px;
 }
+
+.todoCard {
+    box-shadow: 3px 3px 10px #0d6efd;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.deleteButton {
+    width: 25px;
+    height: 25px;
+    border-radius: 10px;
+    grid-column: 2;
+    grid-row: 1;
+    align-self: center;
+    justify-self: right;
+    align-content: center;
+    padding: 3px;
+    border: none;
+    margin-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background-color: hsl(0, 100%, 50%);
+    color: white;
+}
+
+.deleteButton:hover {
+    background-color: hsl(0, 100%, 65%);
+    cursor: pointer;
+}
+
+.completeButton {
+    width: 25px;
+    height: 25px;
+    border-radius: 10px;
+    grid-column: 2;
+    grid-row: 1;
+    align-self: center;
+    justify-self: right;
+    align-content: center;
+    padding: 3px;
+    border: none;
+    margin-right: 40px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background-color: hsl(216, 98%, 52%);
+    color: white;
+}
+
+.completeButton:hover {
+    background-color: hsl(216, 98%, 65%);
+    cursor: pointer;
+}
+
+input:invalid {
+    border: 1px dashed red;
+  }
