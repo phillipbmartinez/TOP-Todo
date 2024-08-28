@@ -78,27 +78,40 @@ function createTodoCard(todo) {
     const newTodoCard = document.createElement("div");
     newTodoCard.classList.add("todoCard");
 
+    // Create card button container
+    const cardButtonContainer = document.createElement("div");
+    cardButtonContainer.classList.add("cardButtonContainer");
+    newTodoCard.appendChild(cardButtonContainer);
+
     // Create and add delete button
     const deleteButton = document.createElement("button");
     deleteButton.classList.add("deleteButton");
     deleteButton.innerHTML = "<strong>X</strong>";
-    newTodoCard.appendChild(deleteButton);
-
+    
     // Create and add complete button
     const checkIcon = document.createElement("img");
     checkIcon.src = "check.svg"
     const completeButton = document.createElement("button");
     completeButton.classList.add("completeButton");
     completeButton.appendChild(checkIcon);
-    newTodoCard.appendChild(completeButton);
 
-    newTodoCard.innerHTML = `
+    // Add delete and complete buttons to cards
+    cardButtonContainer.appendChild(deleteButton);
+    cardButtonContainer.appendChild(completeButton);
+
+    const newTodoCardInner = document.createElement("div");
+    newTodoCardInner.classList.add("newTodoCardInner");
+    newTodoCard.appendChild(newTodoCardInner);
+
+    newTodoCardInner.innerHTML = `
     <p class="title"><strong>Title:</strong> ${todo.title}</p>
     <p class="description"><strong>Description:</strong> ${todo.description}</p>
     <p class="dueDate"><strong>Due Date:</strong> ${todo.dueDate}</p>
     <p class="priority"><strong>Priority:</strong> ${todo.priority}</p>
     <p class="list"><strong>List:</strong> ${todo.list}</p>
     `;
+
+
 
     return newTodoCard;
 };
@@ -130,4 +143,4 @@ clearTodoButton.addEventListener("click", () => {
     document.getElementById("newTodoForm").reset();
 });
 
-// deleteListItem(2);
+deleteListItem(2);
