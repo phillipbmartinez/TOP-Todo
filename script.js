@@ -1,5 +1,6 @@
 const createTodoButton = document.querySelector("#createTodoButton");
 const clearTodoButton = document.querySelector("#clearTodoButton");
+const activeTodoContainer = document.querySelector("#activeTodoContainer");
 let tempTodoList = [
     { title: "Test1", description: "Testing local storage", dueDate: "2024-08-30", priority: "Low", list: "N/A" },
     { title: "Test2", description: "Testing local storage", dueDate: "2024-09-05", priority: "High", list: "N/A" },
@@ -54,18 +55,37 @@ function createTodo() {
     todoList.push(newTodo);
     localStorage.setItem("tempTodoList", JSON.stringify(todoList));
     console.log(todoList);
+
+    const newTodoCard = createTodoCard(newTodo);
+    activeTodoContainer.appendChild(newTodoCard);
 };
 
-// Create todo, logs to console for now
-createTodoButton.addEventListener("click", (event) => {
-    event.preventDefault();
-    createTodo();
-});
+function createTodoCard(todo) {
+    const newTodoCard = document.createElement("div");
+    newTodoCard.classList.add("todoCard");
 
-// Clear form
-clearTodoButton.addEventListener("click", () => {
-    document.getElementById("newTodoForm").reset();
-});
+    // Create delete button
+    const deleteButton = document.createElement("button");
+    deleteButton.classList.add("deleteButton");
+    deleteButton.innerHTML = "<strong>X</strong>";
+
+    // Create complete button
+    const checkIcon = document.createElement("img");
+    checkIcon.src = "check.svg"
+    const completeButton = document.createElement("button");
+    completeButton.classList.add("completeButton");
+    completeButton.appendChild(checkIcon);
+
+    newTodoCard.innerHTML = `
+    <p class="title"><strong>Title:</strong> ${todo.title}</p>
+    <p class="description"><strong>Description:</strong> ${todo.description}</p>
+    <p class="dueDate"><strong>Due Date:</strong> ${todo.dueDate}</p>
+    <p class="priority"><strong>Priority:</strong> ${todo.priority}</p>
+    <p class="list"><strong>List:</strong> ${todo.list}</p>
+    `;
+
+    return newTodoCard;
+};
 
 function deleteListItem(pos) {
     // Retrieve and parse the existing list from localStorage
@@ -82,3 +102,16 @@ function deleteListItem(pos) {
         console.error("Position out of bounds");
     }
 };
+
+// Create todo, logs to console for now
+createTodoButton.addEventListener("click", (event) => {
+    event.preventDefault();
+    createTodo();
+});
+
+// Clear form
+clearTodoButton.addEventListener("click", () => {
+    document.getElementById("newTodoForm").reset();
+});
+
+// deleteListItem(2);
