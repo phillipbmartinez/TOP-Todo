@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1 id="todoH1">Your TODO List</h1>
+
+    <div id="newTodoContainer">
+        <form id="newTodoForm">
+            <label for="title" class="label">Title:</label>
+            <input id="title" class="input" name="title" required type="text">
+
+            <label for="description" class="label">Description:</label>
+            <input id="description" class="input" name="description" required type="text">
+
+            <label for="dueDate" class="label">Due Date:</label>
+            <input id="dueDate" class="input" name="dueDate" type="date">
+
+            <label for="priority" class="label">Priority:</label>
+            <select id="priority" name="priority">
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+            </select>
+
+            <label for="list" class="label">List:</label>
+            <input id="list" class="input" name="list" type="text">
+
+            <div id="buttonContainer">
+                <button type="submit" id="createTodo" class="button">Create Todo!</button>
+                <button type="reset" id="clearTodo" class="button">Clear Todo</button>
+            </div>
+        </form>
+    </div>
+
+
+
+    <script src="script.js"></script>
+</body>
+</html>
