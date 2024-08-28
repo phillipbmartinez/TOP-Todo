@@ -41,13 +41,13 @@ class Todo {
 // Function to validate the two required fields
 function validateInputs(title, description) {
     if (title === "" && description === "") {
-        alert("A title and description are required.")
+        return "A title and description are required.";
     } else if (title === "" && description !== "") {
-        alert("A title is required.")
+        return "A title is required.";
     } else if (title !== "" && description === "") {
-        alert("A description is required.")
+        return "A description is required.";
     }
-    return null; // No errors
+    return "";
 };
 
 function createTodo() {
@@ -59,10 +59,10 @@ function createTodo() {
 
     // Validate inputs
     const errorMessage = validateInputs(title, description);
-    if (errorMessage) {
+    if (errorMessage !== "") {
         alert(errorMessage);
         return;
-    }
+    };
 
     // Create new Todo item and log it to the console
     const newTodo = new Todo(title, description, dueDate, priority, list);
@@ -78,13 +78,13 @@ function createTodoCard(todo) {
     const newTodoCard = document.createElement("div");
     newTodoCard.classList.add("todoCard");
 
-    // Create delete button
+    // Create and add delete button
     const deleteButton = document.createElement("button");
     deleteButton.classList.add("deleteButton");
     deleteButton.innerHTML = "<strong>X</strong>";
-    newTodoCard.appendChild(deleteButton)
+    newTodoCard.appendChild(deleteButton);
 
-    // Create complete button
+    // Create and add complete button
     const checkIcon = document.createElement("img");
     checkIcon.src = "check.svg"
     const completeButton = document.createElement("button");
